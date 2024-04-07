@@ -25,7 +25,7 @@ int main(){
          cout << no << endl;
     }
 
-
+//prueba
     file.close();
     return 0;
 
