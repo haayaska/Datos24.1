@@ -8,24 +8,27 @@ struct Pieza {
 };
 
 struct Tablero {
- Pieza* piezas_tablero; // Lista de piezas que tiene el tablero
+  int cantidad_piezas;
+  Pieza *piezas_tablero;
 };
 
 bool tableroEnJaqueMate(Tablero &tablero);
 
 int main(){
+    char tablerito[64];
     fstream file;
     file.open("tablero.txt", ios::in);
-    int si;
-    file>> si ;
-    cout << si << endl;
+    int npiezas;
+    file>> npiezas ;
+    cout << npiezas << endl;
     char no;
     for(int cont = 0; cont<= 63 ;cont++){
-         file>> no;
-         cout << no << endl;
+      file >> no;
+      cout << no;
+      if((cont+1)%8==0){
+        cout<<"\n";
+      }
     }
-
-//prueba
     file.close();
     return 0;
 
