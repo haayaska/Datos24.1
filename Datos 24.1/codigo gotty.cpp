@@ -14,6 +14,9 @@ struct Tablero {
 
 bool tableroEnJaqueMate(Tablero &tablero);
 
+//Punteros
+int* p_peon;
+
 int main() {
     Tablero table;
     fstream file;
@@ -26,6 +29,10 @@ int main() {
     cout << table.cantidad_piezas << endl;
     Pieza p;
     Pieza rey;
+    Pieza peon;
+
+    p_peon = new int[2];
+
     char no;
     table.piezas_tablero = new Pieza[num_piezas];
     int cont = 1;
@@ -47,8 +54,18 @@ int main() {
             cont++;
 
             if (no == 'P') {
-                // Código relacionado con la pieza 'P'
+
+              peon.simbolo=no;
+              peon.x=x;
+              peon.y=y;
+
+              p_peon[0]=peon.x;
+              p_peon[1]=peon.y; 
+
+              //cout<<"Valor del puntero"<<p_peon[0]<<p_peon[1]<<endl;
+                
             }
+          
         }
 
         x++;
@@ -58,6 +75,26 @@ int main() {
         }
     }
     delete[] table.piezas_tablero;
+    delete[] p_peon;
+
     file.close();
     return 0;
 }
+
+//Peon
+
+int peon(Pieza rey,int* p_peon){
+
+  int a1x,a1y,a2x,a2y;
+  a1x=p_peon[0]+1;
+  a1y=p_peon[1]-1;
+
+  a2x = p_peon[0]-1;
+  a2y = p_peon[1]-1;
+
+  if((rey.x==a1x && rey.y==a1y)||(rey.x==a2x && rey.y==a2y)){  
+  }
+  return 0;
+
+}
+
