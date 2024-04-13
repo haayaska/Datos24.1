@@ -14,6 +14,27 @@ struct Tablero {
 
 bool tableroEnJaqueMate(Tablero &tablero);
 
+bool f_peon(Pieza rey,int* p_peon){
+
+  int a1x,a1y,a2x,a2y;
+  a1x=p_peon[0]+1;
+  a1y=p_peon[1]-1;
+
+  a2x = p_peon[0]-1;
+  a2y = p_peon[1]-1;
+
+  if((rey.x==a1x && rey.y==a1y)||(rey.x==a2x && rey.y==a2y)){
+
+    //llamado a función rey
+
+    return true;}
+
+  else{
+    return false;
+  }
+}
+
+
 //Punteros
 int* p_peon;
 
@@ -45,7 +66,7 @@ int main() {
             rey.simbolo = no;
             rey.x = x;
             rey.y = y;
-            cout << rey.simbolo << rey.x << rey.y << endl;
+            //cout << rey.simbolo << rey.x << rey.y << endl;
         }
         if (no != '.' && no != 'X') {
             cout << "la pieza " << cont << " es " << p.simbolo << " esta en las cordenadas " << p.x << "," << p.y << endl;
@@ -61,6 +82,13 @@ int main() {
 
               p_peon[0]=peon.x;
               p_peon[1]=peon.y; 
+
+              if (f_peon(rey, p_peon) == true) {
+                  //cout << "El rey esta en jaque" << endl;
+              }
+              else {
+                  //cout << "El rey se salva" << endl;
+              }
 
               //cout<<"Valor del puntero"<<p_peon[0]<<p_peon[1]<<endl;
                 
@@ -81,20 +109,5 @@ int main() {
     return 0;
 }
 
-//Peon
-
-int peon(Pieza rey,int* p_peon){
-
-  int a1x,a1y,a2x,a2y;
-  a1x=p_peon[0]+1;
-  a1y=p_peon[1]-1;
-
-  a2x = p_peon[0]-1;
-  a2y = p_peon[1]-1;
-
-  if((rey.x==a1x && rey.y==a1y)||(rey.x==a2x && rey.y==a2y)){  
-  }
-  return 0;
-
-}
+//p
 
